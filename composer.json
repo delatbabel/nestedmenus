@@ -1,0 +1,28 @@
+{
+    "name": "delatbabel/nestedmenus",
+    "description": "A Laravel 5 package for nested menus with database storage.",
+    "keywords": ["eloquent", "l5", "laravel", "laravel5", "menus", "heirarchy"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Del",
+            "email": "del@babel.com.au"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/contracts": "^5.0",
+        "illuminate/support": "^5.0",
+        "cviebrock/eloquent-sluggable": "~3.0",
+        "baum/baum": "~1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Delatbabel\\NestedMenus\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

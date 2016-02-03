@@ -1,0 +1,12 @@
+/bootstrap/compiled.php
+.env.*.php
+.env.php
+.env
+/vendor
+.directory
+.idea
+composer.lock
+/documents
+dirlist.app
+dirlist.cache
+dirlist.vendor
