@@ -84,11 +84,7 @@ I choose?  I have decided to allow for integration of both of these.
 
 Commenced a LavarySidebarRenderer class.  Still a lot of work to do on the rendering.
 
-* Use raw() not add() when there is no route and no URL.
-* Put <span> and </span> around the link text.
-* Optionally put the icon <i class='fa fa-link'></i> before the link text.
 * If the parent menu item class is treeview then make the next UL class = "treeview-menu"
-* Top level children should not be children of the header, they should be siblings.
 
 Need to have separate renderer classes for the other menu types.
 

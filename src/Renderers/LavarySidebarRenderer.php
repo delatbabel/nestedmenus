@@ -119,6 +119,10 @@ class LavarySidebarRenderer implements RendererInterface
                 $menuItem = $menu->raw($menuModel->name, $menu_data);
             } else {
                 $menuItem = $menu->add($menuModel->name, $menu_data);
+
+                // Append and prepend
+                $menuItem->prepend('<i class="fa fa-link""></i> <span>')
+                    ->append('</span>');
             }
 
             // Create all of the first level children as siblings of the header.
