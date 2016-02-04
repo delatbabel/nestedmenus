@@ -68,7 +68,7 @@ class MenusTableBaseSeeder extends Seeder
 
     public function run()
     {
-        DB::table('categories')->delete();
+        DB::table('menus')->delete();
 
         $nodes = $this->getNodes();
 
