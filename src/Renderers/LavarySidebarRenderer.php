@@ -81,10 +81,10 @@ class LavarySidebarRenderer implements RendererInterface
      * Build a child menu item as the descendent of a previously created menu item.
      *
      * @param MenuModel $descendant
-     * @param MenuItem  $menuItem parent menu item
+     * @param MenuItem|MenuBuilder  $menuItem parent menu item
      * @return MenuItem
      */
-    protected function renderChildNode(MenuModel $descendant, MenuItem $menuItem)
+    protected function renderChildNode(MenuModel $descendant, $menuItem)
     {
         /** @var MenuItem $childNode */
         $childNode = $menuItem->add($descendant->name, $this->getMenuData($descendant));
