@@ -2,7 +2,7 @@
 /**
  * ShowMenu
  */
-namespace Delatbabel\Keylists\Console\Commands;
+namespace Delatbabel\NestedMenus\Console\Commands;
 
 use Illuminate\Console\Command;
 use Delatbabel\NestedMenus\Models\Menu;
