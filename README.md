@@ -85,6 +85,8 @@ I choose?  I have decided to allow for integration of both of these.
 Commenced a LavarySidebarRenderer class.  Still a lot of work to do on the rendering.
 
 * If the parent menu item class is treeview then make the next UL class = "treeview-menu"
+  This can't be done without extending the Lavary/Menu/Builder class or doing it all with
+  a custom template.
 
 Need to have separate renderer classes for the other menu types.
 
