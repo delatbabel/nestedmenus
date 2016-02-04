@@ -57,10 +57,10 @@ whatever you like.
 
 ### Run the Seeders
 
-Run the seed (this will create root nodes for each of your category `types`)
+Run the seed (this will create the base menu structure as defined in the seeder)
 
 ```
-    php artisan db:seed --class="MenusTableBaseSeeder"
+    php artisan db:seed
 ```
 
 You may prefer to build your own **MenusTableSeeder** class based on the code in
