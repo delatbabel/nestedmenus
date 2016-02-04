@@ -79,3 +79,50 @@ I choose?
 
 * https://packagist.org/packages/vespakoen/menu
 * https://packagist.org/packages/lavary/laravel-menu
+
+# Architecture
+
+## Rationale
+
+I want to be able to create [AdminLTE](https://almsaeedstudio.com/) based menus, which look
+like this:
+
+```html
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            <li class="header">HEADER</li>
+            <!-- Optionally, you can add icons to the links -->
+            <li class="active"><a href="#"><i class='fa fa-link'></i> <span>Link</span></a></li>
+            <li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
+            <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="#">Link in level 2</a></li>
+                    <li><a href="#">Link in level 2</a></li>
+                </ul>
+            </li>
+        </ul><!-- /.sidebar-menu -->
+```
+
+I want to be able to create them dynamically rather than embed them in the view files.
+
+I want to be able to store the menu structure in a database table so that it can be
+modified at run time or without having to change any code.
+
+## Imports
+
+After using [Baum](http://etrepat.com/baum/) successfully for my
+[Nested Categories](https://github.com/delatbabel/nestedcategories) package, It seemed
+the obvious choice for heirarchical storage of the menu structure.
+
+The only thing that remained is the creation of the views.  I figured that there were
+a few options:
+
+* Use a Laravel / Blade template to create the menu and import it into a page as a section.
+* Use a package to create the menu structure and format it for display.
+
+I found many packages on line to format the menu structure for display, but the two that
+I settled on were these:
+
+* https://packagist.org/packages/vespakoen/menu
+* https://packagist.org/packages/lavary/laravel-menu

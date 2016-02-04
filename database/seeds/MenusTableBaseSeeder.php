@@ -63,7 +63,6 @@ class MenusTableBaseSeeder extends Seeder
                 $this->createNodes($child_node, $node_data['children']);
             }
         }
-
     }
 
     public function run()
