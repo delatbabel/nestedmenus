@@ -112,14 +112,19 @@ class LavarySidebarRenderer implements RendererInterface
         $lavaryMenu->make($menu_name, function($menu) use ($menuModel) {
             $menu_data = $this->getMenuData($menuModel);
 
+            // The first menu item may be a header.
             /** @var LavaryBuilder $menu */
             /** @var MenuItem $menuItem */
-            $menuItem = $menu->add($menuModel->name, $menu_data);
+            if (empty($menu_data['url']) && empty($menu_data['route'])) {
+                $menuItem = $menu->raw($menuModel->name, $menu_data);
+            } else {
+                $menuItem = $menu->add($menuModel->name, $menu_data);
+            }
 
-            // Create all of the first level children
+            // Create all of the first level children as siblings of the header.
             /** @var MenuModel $descendant */
             foreach ($menuModel->getImmediateDescendants() as $descendant) {
-                $descendantItem = $this->renderChildNode($descendant, $menuItem);
+                $descendantItem = $this->renderChildNode($descendant, $menu);
 
                 // Create all of the second level children
                 foreach ($descendant->getImmediateDescendants() as $grandchild) {
