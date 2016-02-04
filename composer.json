@@ -14,7 +14,9 @@
         "illuminate/contracts": "^5.0",
         "illuminate/support": "^5.0",
         "cviebrock/eloquent-sluggable": "~3.0",
-        "baum/baum": "~1.1"
+        "baum/baum": "~1.1",
+        "lavary/laravel-menu": "dev-master",
+        "vespakoen/menu": "3.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0"

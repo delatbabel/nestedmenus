@@ -22,16 +22,33 @@ class MenusTableBaseSeeder extends Seeder
          * must be an array.
          */
         return [
-            'Example List' => [
-                'url'       => 'sysadmin/example',
+            'Example Menu' => [
+                'url'       => '',
                 'children'  => [
+                    'Example List'    => [
+                        'url'       => 'sysadmin/example',
+                        'children'  => [],
+                    ],
                     'Example Create'    => [
                         'url'       => 'sysadmin/example/create',
                         'children'  => [],
                     ],
                     'Example Edit'      => [
                         'url'       => 'sysadmin/example/edit',
-                        'children'  => [],
+                        'children'  => [
+                            'Example Edit 1'      => [
+                                'url'       => 'sysadmin/example/edit/1',
+                                'children'  => [],
+                            ],
+                            'Example Edit 2'      => [
+                                'url'       => 'sysadmin/example/edit/2',
+                                'children'  => [],
+                            ],
+                            'Example Edit 3'      => [
+                                'url'       => 'sysadmin/example/edit/3',
+                                'children'  => [],
+                            ],
+                        ],
                     ],
                 ],
             ],

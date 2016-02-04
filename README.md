@@ -4,9 +4,9 @@ Database storage of nested menus, including rendering
 
 ## Comes with
 
-* Migration for the `categories` table
+* Migration for the `menus` table
 * Menu Model (that extends Baum/Node so you can use all the handy methods from this excellent nested set implementation)
-* Seed for building the root nodes, one for each type of hierarchy, specified in your config file
+* Seed for building the menu nodes, one for each type of menu
 
 ## Installation
 
@@ -88,20 +88,20 @@ I want to be able to create [AdminLTE](https://almsaeedstudio.com/) based menus,
 like this:
 
 ```html
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-            <li class="header">HEADER</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class='fa fa-link'></i> <span>Link</span></a></li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
-            <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
-                </ul>
-            </li>
-        </ul><!-- /.sidebar-menu -->
+<!-- Sidebar Menu -->
+<ul class="sidebar-menu">
+    <li class="header">HEADER</li>
+    <!-- Optionally, you can add icons to the links -->
+    <li class="active"><a href="#"><i class='fa fa-link'></i> <span>Link</span></a></li>
+    <li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
+    <li class="treeview">
+        <a href="#"><i class='fa fa-link'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="treeview-menu">
+            <li><a href="#">Link in level 2</a></li>
+            <li><a href="#">Link in level 2</a></li>
+        </ul>
+    </li>
+</ul><!-- /.sidebar-menu -->
 ```
 
 I want to be able to create them dynamically rather than embed them in the view files.
