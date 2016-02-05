@@ -36,12 +36,18 @@ class ShowMenu extends Command
      */
     public function handle()
     {
+        // Find the menu -- searching by slug is a good way to identify
+        // menus.
         /** @var Menu $menu */
-        $menu = Menu::first();
+        $menu = Menu::where('slug', '=', 'example-menu')->first();
 
+        // Create the renderer.
         $renderer = new LavarySidebarRenderer();
+
+        // Use the renderer to render the menu to HTML.
         $rendered = $renderer->renderToHtml($menu);
 
+        // Output the HTML to the console just as an example.
         $this->output->writeln($rendered);
     }
 }

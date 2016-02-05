@@ -2,6 +2,12 @@
 
 Database storage of nested menus, including rendering
 
+## Based On
+
+* [Baum](http://etrepat.com/baum/) for data storage.
+* [AdminLTE](https://almsaeedstudio.com/) menu templates.
+* [Lavary Menu](https://packagist.org/packages/lavary/laravel-menu) for menu rendering.
+
 ## Comes with
 
 * Migration for the `menus` table
