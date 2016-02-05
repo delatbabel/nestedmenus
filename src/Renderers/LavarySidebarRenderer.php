@@ -72,8 +72,6 @@ class LavarySidebarRenderer implements RendererInterface
             $menu_data['class'] = 'treeview';
         }
 
-        // TODO -- if this has children then need to make the next ul class="treeview-menu"
-
         return $menu_data;
     }
 
@@ -154,6 +152,8 @@ class LavarySidebarRenderer implements RendererInterface
         // Create the menu
         $menuObject = $this->renderToObject($menuModel);
 
-        return $menuObject->asUl(['class' => 'sidebar-menu']);
+        // The outer UL should have class = sidebar-menu
+        // Any inner UL should have class = treeview-menu
+        return $menuObject->asUl(['class' => 'sidebar-menu'], ['class' => 'treeview-menu']);
     }
 }
