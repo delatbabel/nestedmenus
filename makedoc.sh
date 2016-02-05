@@ -10,7 +10,7 @@ APPNAME='Nested Menus'
 CMDFILE=apigen.cmd.$$
 DESTDIR=./documents
 SRCDIRS="src"
-VENDORDIRS="vendor/baum vendor/illuminate vendor/cviebrock vendor/cocur"
+VENDORDIRS="vendor/baum vendor/illuminate vendor/cviebrock vendor/cocur vendor/lavary"
 
 #
 # Ensure that dependencies are installed (including codeception and phpunit)
