@@ -22,9 +22,14 @@
         "phpunit/phpunit": "~4.0"
     },
     "suggest": {
-        "vespakoen/menu": "Package to build menus for display",
-        "lavary/laravel-menu": "Package to build menus for display"
+        "vespakoen/menu": "Package to build menus for display"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:delatbabel/laravel-menu.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Delatbabel\\NestedMenus\\": "src/"
