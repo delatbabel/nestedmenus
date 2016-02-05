@@ -46,6 +46,7 @@ class NestedMenusServiceProvider extends ServiceProvider
         // from having to register them each individually.
         App::register(\Baum\Providers\BaumServiceProvider::class);
         App::register(\Cviebrock\EloquentSluggable\SluggableServiceProvider::class);
+        App::register(\Lavary\Menu\ServiceProvider::class);
     }
 
     /**

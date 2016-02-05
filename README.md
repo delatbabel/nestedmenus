@@ -72,23 +72,66 @@ This class relies on the behind-the-scenes capabilities of Baum.  For details on
 of that see the [README on github](https://github.com/etrepat/baum) or the
 [Baum web site](http://etrepat.com/baum/)
 
+## Creating the Menu Structure
+
+See the MenusTableBaseSeeder for an example of how to build the menu structure in the database.
+You can in fact just extend this seeder to create your own seeder, just overriding the function
+getNodes() to provide the menu structure to seed into the database.
+
+Menu editors and the such like are still to be done.
+
+The important parts of the database structure look like this when completed:
+
+```
++----+-----------+------+------+-------+----------------+-------------------------+-------+
+| id | parent_id | lft  | rgt  | depth | name           | url                     | route |
++----+-----------+------+------+-------+----------------+-------------------------+-------+
+|  1 |      NULL |    1 |   14 |     0 | Example Menu   |                         | NULL  |
+|  2 |         1 |    2 |    3 |     1 | Example List   | sysadmin/example        | NULL  |
+|  3 |         1 |    4 |    5 |     1 | Example Create | sysadmin/example/create | NULL  |
+|  4 |         1 |    6 |   13 |     1 | Example Edit   | sysadmin/example/edit   | NULL  |
+|  5 |         4 |    7 |    8 |     2 | Example Edit 1 | sysadmin/example/edit/1 | NULL  |
+|  6 |         4 |    9 |   10 |     2 | Example Edit 2 | sysadmin/example/edit/2 | NULL  |
+|  7 |         4 |   11 |   12 |     2 | Example Edit 3 | sysadmin/example/edit/3 | NULL  |
++----+-----------+------+------+-------+----------------+-------------------------+-------+
+```
+
+Note that at the moment the renderers available only support a 2 level menu structure.
+Level 0 is the heading. At level 1 are the various options, and at level 2 are the
+sub-options for each option.
+
+See the [Baum](http://etrepat.com/baum/) functions for more detail on creating and
+manipulating this structure.
+
+## Rendering the Menu Structure
+
+See the ShowMenu class under src/Console/Commands for the details on how to do this.  It's
+really simple:
+
+```php
+    $renderer = new LavarySidebarRenderer();
+    $rendered = $renderer->renderToHtml($menu);
+```
+
+Rendering to different menu structures requires different renderer classes.  I will build
+more of these over time.
+
 # TODO
 
-Integrate one of the menu front end creators. There are a few out there but which one should
-I choose?  I have decided to allow for integration of both of these.
+Integrate additional menu front end creators. There are a few out there.  I have decided to
+allow for integration of both of these:
 
 * https://packagist.org/packages/vespakoen/menu
 * https://packagist.org/packages/lavary/laravel-menu
 
 ## Lavary Menu
 
-Commenced a LavarySidebarRenderer class.  Still a lot of work to do on the rendering.
+Completed a LavarySidebarRenderer class.  I had to extend the Lavary menu classes in order
+to do this, so instead of their main repo use the VCS mentioned in the composer.json in this
+package.  I have submitted a PR to the Lavary repo for this change.  See
+[PR #100](https://github.com/lavary/laravel-menu/pull/100).
 
-* If the parent menu item class is treeview then make the next UL class = "treeview-menu"
-  This can't be done without extending the Lavary/Menu/Builder class or doing it all with
-  a custom template.
-
-Need to have separate renderer classes for the other menu types.
+Need to have separate renderer classes for the other menu types (header menus, pulldown menus, etc).
 
 ## Vespakoen Menu
 

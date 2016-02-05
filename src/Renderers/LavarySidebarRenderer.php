@@ -104,7 +104,9 @@ class LavarySidebarRenderer implements RendererInterface
         $menu_name = Str::studly($menuModel->name);
 
         // Create the first item in the menu.  Don't use the facade because
-        // it may not work if the service provider hasn't been loaded.
+        // it may not work if the alias hasn't been created, and I don't document
+        // creating the alias in my own README because the alias name conflicts
+        // with one of my own class names.
         $lavaryMenu = new LavaryMenu();
 
         $lavaryMenu->make($menu_name, function($menu) use ($menuModel) {
