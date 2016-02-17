@@ -89,17 +89,17 @@ Menu editors and the such like are still to be done.
 The important parts of the database structure look like this when completed:
 
 ```
-+----+-----------+------+------+-------+----------------+-------------------------+-------+
-| id | parent_id | lft  | rgt  | depth | name           | url                     | route |
-+----+-----------+------+------+-------+----------------+-------------------------+-------+
-|  1 |      NULL |    1 |   14 |     0 | Example Menu   |                         | NULL  |
-|  2 |         1 |    2 |    3 |     1 | Example List   | sysadmin/example        | NULL  |
-|  3 |         1 |    4 |    5 |     1 | Example Create | sysadmin/example/create | NULL  |
-|  4 |         1 |    6 |   13 |     1 | Example Edit   | sysadmin/example/edit   | NULL  |
-|  5 |         4 |    7 |    8 |     2 | Example Edit 1 | sysadmin/example/edit/1 | NULL  |
-|  6 |         4 |    9 |   10 |     2 | Example Edit 2 | sysadmin/example/edit/2 | NULL  |
-|  7 |         4 |   11 |   12 |     2 | Example Edit 3 | sysadmin/example/edit/3 | NULL  |
-+----+-----------+------+------+-------+----------------+-------------------------+-------+
++----+-----------+------+------+-------+----------------|----------------+-------------------------+-------+
+| id | parent_id | lft  | rgt  | depth | slug           | name           | url                     | route |
++----+-----------+------+------+-------+----------------|----------------+-------------------------+-------+
+|  1 |      NULL |    1 |   14 |     0 | example-menu   | Example Menu   |                         | NULL  |
+|  2 |         1 |    2 |    3 |     1 | example-list   | Example List   | sysadmin/example        | NULL  |
+|  3 |         1 |    4 |    5 |     1 | example-create | Example Create | sysadmin/example/create | NULL  |
+|  4 |         1 |    6 |   13 |     1 | example-edit   | Example Edit   | sysadmin/example/edit   | NULL  |
+|  5 |         4 |    7 |    8 |     2 | example-edit-1 | Example Edit 1 | sysadmin/example/edit/1 | NULL  |
+|  6 |         4 |    9 |   10 |     2 | example-edit-2 | Example Edit 2 | sysadmin/example/edit/2 | NULL  |
+|  7 |         4 |   11 |   12 |     2 | example-edit-3 | Example Edit 3 | sysadmin/example/edit/3 | NULL  |
++----+-----------+------+------+-------+----------------|----------------+-------------------------+-------+
 ```
 
 Note that at the moment the renderers available only support a 2 level menu structure.
@@ -108,6 +108,18 @@ sub-options for each option.
 
 See the [Baum](http://etrepat.com/baum/) functions for more detail on creating and
 manipulating this structure.
+
+## Loading the Menu Structure
+
+The menu structure can be loaded from the database using any normal Eloquent Model code, for
+example:
+
+```php
+    $menu = \Delatbabel\NestedMenus\Models\Menu::where('slug', '=', 'example-menu')->first();
+```
+
+Note that you only need to load the top level of the menu in order to be able to render the
+entire menu.
 
 ## Rendering the Menu Structure
 
@@ -121,6 +133,13 @@ really simple:
 
 Rendering to different menu structures requires different renderer classes.  I will build
 more of these over time.
+
+Placing the rendered menu on a view is as simple as this:
+
+```php
+    return View::make("dashboard.example")
+        ->with('sidebar_menu', $sidebar_menu);
+```
 
 # TODO
 
