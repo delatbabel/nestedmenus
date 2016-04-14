@@ -66,10 +66,14 @@ class MenusTableBaseSeeder extends Seeder
         foreach ($nodes as $node_name => $node_data) {
 
             // Create the highest level child node.
-            $child_node = $root_node->children()->create([
-                'name'  => $node_name,
-                'url'   => $node_data['url'],
-            ]);
+            $child_node_data = ['name'  => $node_name];
+            if (! empty($node_data['url'])) {
+                $child_node_data['url'] = $node_data['url'];
+            }
+            if (! empty($node_data['route'])) {
+                $child_node_data['route'] = $node_data['route'];
+            }
+            $child_node = $root_node->children()->create($child_node_data);
 
             // Update the description, just for fun
             $child_node->description = $child_node->path;
