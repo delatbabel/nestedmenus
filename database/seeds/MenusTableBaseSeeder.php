@@ -84,8 +84,6 @@ class MenusTableBaseSeeder extends Seeder
 
     public function run()
     {
-        DB::table('menus')->delete();
-
         $nodes = $this->getNodes();
 
         // Build the above list of nodes as a heirarchical tree
