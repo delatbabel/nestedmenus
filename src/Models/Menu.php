@@ -5,8 +5,7 @@
 namespace Delatbabel\NestedMenus\Models;
 
 use Baum\Node;
-use Cviebrock\EloquentSluggable\SluggableInterface;
-use Cviebrock\EloquentSluggable\SluggableTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 /**
  * Menu
@@ -15,21 +14,9 @@ use Cviebrock\EloquentSluggable\SluggableTrait;
  *
  * @link https://github.com/delatbabel/nestedcategories
  */
-class Menu extends Node implements SluggableInterface
+class Menu extends Node
 {
-    use SluggableTrait;
-
-    /**
-     * Used for Cviebrock/EloquentSluggable
-     * @var array
-     */
-    protected $sluggable = array(
-        'build_from'         => 'name',
-        'save_to'            => 'slug',
-        'max_length'         => 255,
-        'unique'             => true,
-        'include_trashed'    => true,
-    );
+    use Sluggable;
 
     /**
      * Stores the old parent id before editing
@@ -40,6 +27,23 @@ class Menu extends Node implements SluggableInterface
     protected $casts = [
         'extended_data'     => 'array',
     ];
+
+    /**
+     * Sluggable configuration.
+     *
+     * Used for Cviebrock/EloquentSluggable
+     *
+     * @var array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source'         => 'name',
+                'unique'         => true,
+                'includeTrashed' => true,
+            ]
+        ];
+    }
 
     /**
      * The "booting" method of the model.
@@ -62,12 +66,12 @@ class Menu extends Node implements SluggableInterface
     }
 
     /**
-	 * Check for dirty parent ID.
-	 *
-	 * Returns true if the parent_id value in the database is different to the current
-	 * value in the model's dirty attributes
-	 *
-	 * @return bool
+     * Check for dirty parent ID.
+     *
+     * Returns true if the parent_id value in the database is different to the current
+     * value in the model's dirty attributes
+     *
+     * @return bool
      */
     protected function isParentIdSame()
     {

@@ -13,7 +13,7 @@
         "php": ">=5.4.0",
         "illuminate/contracts": "^5.0",
         "illuminate/support": "^5.0",
-        "cviebrock/eloquent-sluggable": "~3.0",
+        "cviebrock/eloquent-sluggable": "~4.0",
         "baum/baum": "~1.1",
         "lavary/laravel-menu": "dev-master",
         "vespakoen/menu": "3.*"
